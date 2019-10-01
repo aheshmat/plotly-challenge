@@ -1,11 +1,10 @@
 function buildMetadata(sample) {
 
   // @TODO: Complete the following function that builds the metadata panel
-
   // Use `d3.json` to fetch the metadata for a sample
     // Use d3 to select the panel with id of `#sample-metadata`
         // Use `.html("") to clear any existing metadata
-    d3.json(`/metadata/${sample}`).then((data) => {
+    d3.json(`../DataSets/belly_button_metadata/${sample}`).then((data) => {
       var PANEL = d3.select("#sample-metadata");
       PANEL.html("");
      // Hint: Inside the loop, you will need to use d3 to append new
@@ -26,7 +25,7 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
-  d3.json(`/samples/${samples}`).then((data) => {
+  d3.json(`../DataSets/belly_button_metadata/${samples}`).then((data) => {
     const otu_ids = data.otu_ids;
     const otu_labels = data.otu_labels;
     const sample_values = data.sample_values;

@@ -48,7 +48,7 @@ def names():
     return jsonify(list(df.columns)[2:])
 
 
-@app.route("/metadata/<sample>")
+@app.route("../DataSets/belly_button_metadata/<sample>")
 def sample_metadata(sample):
     """Return the MetaData for a given sample."""
     sel = [
@@ -78,7 +78,7 @@ def sample_metadata(sample):
     return jsonify(sample_metadata)
 
 
-@app.route("/samples/<sample>")
+@app.route("../DataSets/belly_button_metadata/<sample>")
 def samples(sample):
     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
     stmt = db.session.query(Samples).statement
