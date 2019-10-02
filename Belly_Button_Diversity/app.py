@@ -1,8 +1,8 @@
 import os
+
 import pandas as pd
 import numpy as np
 
-import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
@@ -48,7 +48,7 @@ def names():
     return jsonify(list(df.columns)[2:])
 
 
-@app.route("../DataSets/belly_button_metadata/<sample>")
+@app.route("/metadata/<sample>")
 def sample_metadata(sample):
     """Return the MetaData for a given sample."""
     sel = [
@@ -78,7 +78,7 @@ def sample_metadata(sample):
     return jsonify(sample_metadata)
 
 
-@app.route("../DataSets/belly_button_metadata/<sample>")
+@app.route("/samples/<sample>")
 def samples(sample):
     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
     stmt = db.session.query(Samples).statement
@@ -102,3 +102,4 @@ def samples(sample):
 
 if __name__ == "__main__":
     app.run()
+    
